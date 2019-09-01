@@ -36,6 +36,7 @@ PriceList.propTypes = {
 // 用于提供默认值，个人局觉得react组件的props校验没有vue简洁
 PriceList.defaultProps = {
   onDeleteItem: () => {},
-  onModifyItem: () => {}
+  onModifyItem: () => {},
+  items: []
 };
 export default PriceList;
