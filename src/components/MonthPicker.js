@@ -12,6 +12,7 @@ class MonthPicker extends React.Component {
     this.togglePicker = this.togglePicker.bind(this);
     this.selectYear = this.selectYear.bind(this);
     this.selectMonth = this.selectMonth.bind(this);
+    // this.node = React.createRef();
   }
   togglePicker(e){
     e.preventDefault();
@@ -36,25 +37,16 @@ class MonthPicker extends React.Component {
     });
   }
   componentDidMount() {
-    // const dom = ReactDOM.findDOMNode(this);
-    // const _this = this;
-    // const panel = document.querySelector('.select-panel');
-    // document.addEventListener('click', () => {
-      // this.setState({
-      //   isShow: false
-      // });
-      // dom.style.display = 'none';
-    // });
-    // dom.onClick = (e) => {
-    //   console.log(e);
-    //   e.stopPropagation();
-    //   return;
-    // };
-    // panel.addEventListener('click', (e) => {
-    //   console.log(e);
-    //   e.stopPropagation();
-      // return;
-    // });
+    document.addEventListener('click', this.handleClick);
+  }
+  componentWillUnmount() {
+    document.removeEventListener('click');
+  }
+  handleClick = (e) => {
+    if (this.node.contains(e.target)) return
+    this.setState({
+      isShow: false
+    });
   }
   render() {
     // let { year , month } = this.props;
@@ -64,7 +56,7 @@ class MonthPicker extends React.Component {
       return 2019 + item;
     });
     return (
-      <div className='dropdown month-picker-component'>
+      <div className='dropdown month-picker-component' ref={(ref) => {this.node = ref}}>
         <button 
           className="btn dropdown-toggle btn-primary" 
           type='button'
@@ -74,7 +66,7 @@ class MonthPicker extends React.Component {
         </button>
        <div className='m-3 text-center select-panel' style={{background: '#fff',position:'absolute', zIndex:'999'}}>
         { isShow && <div className='d-flex border text-center'>
-          <div className='col-6 border-right'>
+          <div className='col-6 border-right select-panel-content'>
               {isShow && 
                 <div>
                   {yearRange.map((item, index) => {

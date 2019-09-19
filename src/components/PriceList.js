@@ -14,7 +14,7 @@ const PriceList = ({items, onModifyItem, onDeleteItem}) => {
           <span className=''>{item.title}</span>
           <span>{item.category.type === 'income' ? '+' : '-'}{item.price}</span>
           <span>{item.date}</span>
-          <div className='d-flex'>
+          <div className='d-flex operate'>
             <p onClick={() => {onModifyItem(item)}} className='p-1'>
               <Ionicon className='rounded-circle p-1' fontSize='30px' style={{background:'#007bff'}} color={'#fff'} icon={'ios-create-outline'}/>
             </p>

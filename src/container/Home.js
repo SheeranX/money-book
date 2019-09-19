@@ -5,6 +5,20 @@ import TabView from '../components/TabView';
 import TotalPrice from '../components/TotalPrice';
 import CreateBtn from '../components/CreateBtn';
 import {LIST_VIEW, getCurrentDate, CHART_VIEW} from '../util';
+export const items = [{
+  id: '1',
+  title: 'react',
+  price: 200,
+  income: 200,
+  outcome: 400,
+  date: '2019-01-01',
+  category: {
+    id: 1,
+    name: '旅行',
+    type: 'outcome',
+    icon: 'ios-plane'
+  }
+}];
 class Home extends React.Component{
   constructor(props) {
     super(props);
